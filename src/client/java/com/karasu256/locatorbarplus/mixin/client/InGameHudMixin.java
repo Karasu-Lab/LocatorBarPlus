@@ -63,8 +63,8 @@ public class InGameHudMixin implements IInGameHud {
 
     @Inject(method = "shouldShowExperienceBar", at = @At(value = "HEAD"), cancellable = true)
     private void shouldShowExperienceBar(CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(config.general.alwaysHideLocatorBar
-                || this.client.player.experienceBarDisplayStartTime + 100 > this.client.player.age);
+        cir.setReturnValue(!config.general.neverHideLocatorBar && (config.general.alwaysHideLocatorBar
+                || this.client.player.experienceBarDisplayStartTime + 100 > this.client.player.age));
     }
 
     @Unique

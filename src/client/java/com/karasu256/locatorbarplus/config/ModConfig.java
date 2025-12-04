@@ -17,6 +17,8 @@ public class ModConfig implements ConfigData {
     public static class General{
         public boolean modEnabled = true;
         public boolean alwaysHideLocatorBar = false;
+        public boolean neverHideLocatorBar = false;
+
     }
 
     public static class LocatorBar {

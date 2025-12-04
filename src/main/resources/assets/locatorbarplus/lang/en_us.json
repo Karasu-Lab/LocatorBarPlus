@@ -3,6 +3,7 @@
   "text.autoconfig.locatorbarplus.option.general": "General Settings",
   "text.autoconfig.locatorbarplus.option.general.modEnabled": "Mod Enabled",
   "text.autoconfig.locatorbarplus.option.general.alwaysHideLocatorBar": "Always Hide Locator Bar",
+  "text.autoconfig.locatorbarplus.option.general.neverHideLocatorBar": "Never Hide Locator Bar",
   "text.autoconfig.locatorbarplus.option.locatorBar": "Locator Bar Settings",
   "text.autoconfig.locatorbarplus.option.locatorBar.experienceBarTransparency": "Experience Bar Transparency"
 }
