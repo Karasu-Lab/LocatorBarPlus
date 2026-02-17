@@ -24,6 +24,9 @@ public class LocatorBarTesterCommand {
                                 .executes(LocatorBarTesterCommand::enableParams)
                         )
                 )
+                .then(ClientCommandManager.literal("disable")
+                        .executes(LocatorBarTesterCommand::disableParams)
+                )
         );
     }
 
@@ -39,12 +42,9 @@ public class LocatorBarTesterCommand {
             
             if (!targets.isEmpty()) {
                 OverlayManagerState state = OverlayManagerState.getInstance();
-                boolean newState = !state.isForcedByCommand();
-                state.setForcedByCommand(newState);
-                if (newState) {
-                    state.setForcedEntities(targets);
-                }
-                context.getSource().sendFeedback(Text.literal("LocatorBarPlus Overlay Force Mode: " + newState + " (Matched " + targets.size() + " entities)"));
+                state.setForcedByCommand(true);
+                state.setForcedEntities(targets);
+                context.getSource().sendFeedback(Text.literal("LocatorBarPlus Overlay Force Mode: Enabled (Matched " + targets.size() + " entities)"));
                 return targets.size();
             }
             
@@ -55,5 +55,11 @@ public class LocatorBarTesterCommand {
             context.getSource().sendFeedback(Text.literal("Error executing command: " + e.getMessage()));
             return 0;
         }
+    }
+
+    private static int disableParams(CommandContext<FabricClientCommandSource> context) {
+        OverlayManagerState.getInstance().setForcedByCommand(false);
+        context.getSource().sendFeedback(Text.literal("LocatorBarPlus Overlay Force Mode: Disabled"));
+        return 1;
     }
 }
