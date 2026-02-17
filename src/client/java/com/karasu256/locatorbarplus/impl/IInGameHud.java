@@ -6,6 +6,8 @@ import net.minecraft.client.gui.hud.bar.LocatorBar;
 
 public interface IInGameHud {
     LocatorBar locatorBarPlus$getLocatorBar();
+
     ExperienceBar locatorBarPlus$getExperienceBar();
+
     Bar locatorBarPlus$getCurrentBar();
 }

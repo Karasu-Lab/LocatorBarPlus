@@ -20,13 +20,6 @@ import org.spongepowered.asm.mixin.Unique;
 public abstract class LocatorBarMixin implements ILocatorBar, Bar {
     @Shadow
     @Final
-    private MinecraftClient client;
-
-    @Unique
-    private ExperienceBar experienceBar;
-
-    @Shadow
-    @Final
     private static Identifier BACKGROUND;
     @Shadow
     @Final
@@ -34,7 +27,11 @@ public abstract class LocatorBarMixin implements ILocatorBar, Bar {
     @Shadow
     @Final
     private static Identifier ARROW_DOWN;
-
+    @Shadow
+    @Final
+    private MinecraftClient client;
+    @Unique
+    private ExperienceBar experienceBar;
 
     @Override
     public void renderAddons(DrawContext context, RenderTickCounter tickCounter, float transparency) {

@@ -29,7 +29,7 @@ public class LocatorBarRenderer {
 
     public static void renderHud(IInGameHud hud, DrawContext context, RenderTickCounter tickCounter, ModConfig config, MinecraftClient client) {
         OverlayManagerState.getInstance().update(client.player, config);
-        
+
         boolean overlayActive = OverlayManagerState.getInstance().shouldShowOverlay();
         boolean hasMarkers = hasAnyMarkers(client);
 
@@ -52,19 +52,19 @@ public class LocatorBarRenderer {
 
         for (Entity entity : OverlayManagerState.getInstance().getForcedEntities()) {
             if (entity == client.cameraEntity) continue;
-            
+
             Vec3d cameraPos = client.gameRenderer.getCamera().getPos();
             Vec3d entityPos = entity.getPos();
-            
+
             double dx = entityPos.x - cameraPos.x;
             double dz = entityPos.z - cameraPos.z;
-            
+
             double bearing = Math.toDegrees(Math.atan2(dz, dx)) - 90.0F;
             double relativeYaw = MathHelper.wrapDegrees(bearing - client.gameRenderer.getCamera().getYaw());
-            
+
             if (relativeYaw >= -60.0 && relativeYaw <= 60.0) return true;
         }
-        
+
         if (client.cameraEntity != null && client.player.networkHandler != null) {
             World world = client.cameraEntity.getWorld();
             boolean[] found = {false};
@@ -95,36 +95,36 @@ public class LocatorBarRenderer {
         ((IExperienceBar) experienceBar).renderBar(context, tickCounter, transparency);
 
         int i = bar.getCenterY(client.getWindow());
-        
+
         List<Entity> forcedEntities = OverlayManagerState.getInstance().getForcedEntities();
         for (Entity entity : forcedEntities) {
             if (entity == client.cameraEntity) continue;
-            
+
             Vec3d cameraPos = client.gameRenderer.getCamera().getPos();
             Vec3d entityPos = entity.getPos();
-            
+
             double dx = entityPos.x - cameraPos.x;
             double dz = entityPos.z - cameraPos.z;
-            
+
             double bearing = Math.toDegrees(Math.atan2(dz, dx)) - 90.0F;
             double relativeYaw = MathHelper.wrapDegrees(bearing - client.gameRenderer.getCamera().getYaw());
-            
-            if (relativeYaw >= -60.0 && relativeYaw <= 60.0) {
-                 int j = MathHelper.ceil((float) (context.getScaledWindowWidth() - 9) / 2.0F);
-                 int l = (int) (relativeYaw * 173.0 / 2.0 / 60.0);
-                 context.fill(j + l + 2, i, j + l + 6, i + 4, color);
 
-                 double dy = entityPos.y - cameraPos.y;
-                 double dist = Math.sqrt(dx * dx + dz * dz);
-                 double angleToEntity = Math.toDegrees(Math.atan2(dy, dist));
-                 double relativePitch = angleToEntity + client.gameRenderer.getCamera().getPitch();
-                 
-                 if (Math.abs(relativePitch) > 15.0) {
-                     boolean isAbove = relativePitch > 0;
-                     Identifier arrow = isAbove ? locatorBar.locatorBarPlus$getArrowUp() : locatorBar.locatorBarPlus$getArrowDown();
-                     int m = isAbove ? -6 : 6;
-                     context.drawGuiTexture(RenderPipelines.GUI_TEXTURED, arrow, j + l + 1, i + m, 7, 5, color);
-                 }
+            if (relativeYaw >= -60.0 && relativeYaw <= 60.0) {
+                int j = MathHelper.ceil((float) (context.getScaledWindowWidth() - 9) / 2.0F);
+                int l = (int) (relativeYaw * 173.0 / 2.0 / 60.0);
+                context.fill(j + l + 2, i, j + l + 6, i + 4, color);
+
+                double dy = entityPos.y - cameraPos.y;
+                double dist = Math.sqrt(dx * dx + dz * dz);
+                double angleToEntity = Math.toDegrees(Math.atan2(dy, dist));
+                double relativePitch = angleToEntity + client.gameRenderer.getCamera().getPitch();
+
+                if (Math.abs(relativePitch) > 15.0) {
+                    boolean isAbove = relativePitch > 0;
+                    Identifier arrow = isAbove ? locatorBar.locatorBarPlus$getArrowUp() : locatorBar.locatorBarPlus$getArrowDown();
+                    int m = isAbove ? -6 : 6;
+                    context.drawGuiTexture(RenderPipelines.GUI_TEXTURED, arrow, j + l + 1, i + m, 7, 5, color);
+                }
             }
         }
 
@@ -140,21 +140,21 @@ public class LocatorBarRenderer {
                             WaypointStyleAsset waypointStyleAsset = client.getWaypointStyleAssetManager().get(config.style);
                             float f = MathHelper.sqrt((float) waypoint.squaredDistanceTo(client.cameraEntity));
                             Identifier identifier = waypointStyleAsset.getSpriteForDistance(f);
-                            
-                            int k = config.color.orElseGet(() -> 
-                                waypoint.getSource().map(
-                                    (uuid) -> ColorHelper.withBrightness(ColorHelper.withAlpha(255, uuid.hashCode()), 0.9F), 
-                                    (name) -> ColorHelper.withBrightness(ColorHelper.withAlpha(255, name.hashCode()), 0.9F)
-                                )
+
+                            int k = config.color.orElseGet(() ->
+                                    waypoint.getSource().map(
+                                            (uuid) -> ColorHelper.withBrightness(ColorHelper.withAlpha(255, uuid.hashCode()), 0.9F),
+                                            (name) -> ColorHelper.withBrightness(ColorHelper.withAlpha(255, name.hashCode()), 0.9F)
+                                    )
                             );
-                            
+
                             int originalAlpha = ColorHelper.getAlpha(k);
                             int newAlpha = (int) (originalAlpha * transparency);
                             int newColor = ColorHelper.withAlpha(newAlpha, k);
 
                             int l = (int) (d * 173.0 / 2.0 / 60.0);
                             context.drawGuiTexture(RenderPipelines.GUI_TEXTURED, identifier, j + l, i - 2, 9, 9, newColor);
-                            
+
                             TrackedWaypoint.Pitch pitch = waypoint.getPitch(world, client.gameRenderer);
                             if (pitch != TrackedWaypoint.Pitch.NONE) {
                                 int m;

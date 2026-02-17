@@ -8,11 +8,14 @@ import net.minecraft.util.Identifier;
 
 public interface ILocatorBar {
     void setInGameHud(InGameHud inGameHud);
+
     void setExperienceBar(ExperienceBar experienceBar);
 
     void renderAddons(DrawContext context, RenderTickCounter tickCounter, float transparency);
 
     Identifier locatorBarPlus$getBackground();
+
     Identifier locatorBarPlus$getArrowUp();
+
     Identifier locatorBarPlus$getArrowDown();
 }

@@ -17,11 +17,11 @@ public abstract class AbstractCommand implements ICommand {
 
     public static void register(CommandDispatcher<FabricClientCommandSource> dispatcher, ICommand root) {
         LiteralArgumentBuilder<FabricClientCommandSource> builder = ClientCommandManager.literal(root.getName());
-        
+
         for (ICommand sub : root.getSubCommands()) {
             builder.then(sub.getArgumentBuilder());
         }
-        
+
         dispatcher.register(builder);
     }
 

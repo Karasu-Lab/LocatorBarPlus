@@ -29,6 +29,10 @@ import java.util.function.Supplier;
 @SuppressWarnings({"DataFlowIssue", "RedundantCast"})
 @Mixin(InGameHud.class)
 public class InGameHudMixin implements IInGameHud {
+    @Unique
+    public LocatorBar locatorBar;
+    @Unique
+    public ExperienceBar experienceBar;
     @Shadow
     @Final
     private MinecraftClient client;
@@ -40,12 +44,6 @@ public class InGameHudMixin implements IInGameHud {
     private Pair<InGameHud.BarType, Bar> currentBar;
     @Unique
     private ModConfig config;
-
-    @Unique
-    public LocatorBar locatorBar;
-
-    @Unique
-    public ExperienceBar experienceBar;
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void onConstructed(MinecraftClient client, CallbackInfo ci) {
@@ -69,7 +67,7 @@ public class InGameHudMixin implements IInGameHud {
             cir.setReturnValue(true);
             return;
         }
-        
+
         if (OverlayManagerState.getInstance().shouldShowOverlay() && LocatorBarRenderer.hasAnyMarkers(this.client)) {
             cir.setReturnValue(true);
         }

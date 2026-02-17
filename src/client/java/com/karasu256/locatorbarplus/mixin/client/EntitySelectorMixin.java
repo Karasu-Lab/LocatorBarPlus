@@ -20,16 +20,39 @@ import java.util.function.Predicate;
 
 @Mixin(EntitySelector.class)
 public abstract class EntitySelectorMixin implements EntitySelectorExtensions {
-    @Shadow @Final private int limit;
-    @Shadow @Final private boolean includesNonPlayers;
-    @Shadow @Final private List<Predicate<Entity>> predicates;
-    @Shadow @Final private NumberRange.DoubleRange distance;
-    @Shadow @Final private Function<Vec3d, Vec3d> positionOffset;
-    @Shadow @Final @Nullable private Box box;
-    @Shadow @Final private BiConsumer<Vec3d, List<? extends Entity>> sorter;
-    @Shadow @Final @Nullable private String playerName;
-    @Shadow @Final @Nullable private UUID uuid;
-    @Shadow @Final private TypeFilter<Entity, ?> entityFilter;
+    @Shadow
+    @Final
+    private int limit;
+    @Shadow
+    @Final
+    private boolean includesNonPlayers;
+    @Shadow
+    @Final
+    private List<Predicate<Entity>> predicates;
+    @Shadow
+    @Final
+    private NumberRange.DoubleRange distance;
+    @Shadow
+    @Final
+    private Function<Vec3d, Vec3d> positionOffset;
+    @Shadow
+    @Final
+    @Nullable
+    private Box box;
+    @Shadow
+    @Final
+    private BiConsumer<Vec3d, List<? extends Entity>> sorter;
+    @Shadow
+    @Final
+    @Nullable
+    private String playerName;
+    @Shadow
+    @Final
+    @Nullable
+    private UUID uuid;
+    @Shadow
+    @Final
+    private TypeFilter<Entity, ?> entityFilter;
 
     @Override
     public boolean locatorBarPlus$includesNonPlayers() {

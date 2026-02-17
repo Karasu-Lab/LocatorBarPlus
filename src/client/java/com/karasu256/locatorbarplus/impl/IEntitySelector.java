@@ -14,14 +14,24 @@ import java.util.function.Predicate;
 
 public interface IEntitySelector {
     List<Entity> locatorBarPlus$getEntities(Vec3d pos, List<? extends Entity> entities);
+
     boolean locatorBarPlus$includesNonPlayers();
+
     String locatorBarPlus$getPlayerName();
+
     UUID locatorBarPlus$getUuid();
+
     Function<Vec3d, Vec3d> locatorBarPlus$getPositionOffset();
+
     Box locatorBarPlus$getBox();
+
     NumberRange.DoubleRange locatorBarPlus$getDistance();
+
     List<Predicate<Entity>> locatorBarPlus$getPredicates();
+
     TypeFilter<Entity, ?> locatorBarPlus$getEntityFilter();
+
     int locatorBarPlus$getLimit();
+
     BiConsumer<Vec3d, List<? extends Entity>> locatorBarPlus$getSorter();
 }

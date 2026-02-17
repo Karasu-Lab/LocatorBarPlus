@@ -14,8 +14,8 @@ public class OverlayManagerState {
 
     private final IActivationCondition condition;
     private final IActivationLogic logic;
-    private boolean isModeActive = false;
     private final List<Entity> forcedEntities = new ArrayList<>();
+    private boolean isModeActive = false;
 
     private OverlayManagerState() {
         this.condition = new SneakCondition();
@@ -37,18 +37,18 @@ public class OverlayManagerState {
 
     public void setForcedByCommand(boolean forced) {
         if (!forced) {
-            this.isModeActive = false; 
+            this.isModeActive = false;
             this.logic.reset();
             this.forcedEntities.clear();
         }
     }
 
+    public List<Entity> getForcedEntities() {
+        return forcedEntities;
+    }
+
     public void setForcedEntities(List<Entity> entities) {
         this.forcedEntities.clear();
         this.forcedEntities.addAll(entities);
-    }
-
-    public List<Entity> getForcedEntities() {
-        return forcedEntities;
     }
 }

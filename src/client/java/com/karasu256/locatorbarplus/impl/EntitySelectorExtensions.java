@@ -3,7 +3,6 @@ package com.karasu256.locatorbarplus.impl;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.predicate.NumberRange;
 import net.minecraft.resource.featuretoggle.FeatureSet;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.Box;
@@ -15,31 +14,31 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public interface EntitySelectorExtensions extends IEntitySelector {
-    
+
     default List<Entity> locatorBarPlus$getEntities(Vec3d pos, List<? extends Entity> entities) {
         if (!this.locatorBarPlus$includesNonPlayers()) {
             return this.locatorBarPlus$getPlayers(pos, entities);
         } else if (this.locatorBarPlus$getPlayerName() != null) {
             List<Entity> result = new ArrayList<>();
             for (Entity entity : entities) {
-                if (entity instanceof PlayerEntity && ((PlayerEntity)entity).getGameProfile().getName().equals(this.locatorBarPlus$getPlayerName())) {
+                if (entity instanceof PlayerEntity && ((PlayerEntity) entity).getGameProfile().getName().equals(this.locatorBarPlus$getPlayerName())) {
                     result.add(entity);
                 }
             }
             return result;
         } else if (this.locatorBarPlus$getUuid() != null) {
-             List<Entity> result = new ArrayList<>();
-             for (Entity entity : entities) {
-                 if (entity.getUuid().equals(this.locatorBarPlus$getUuid())) {
-                     result.add(entity);
-                 }
-             }
-             return result;
+            List<Entity> result = new ArrayList<>();
+            for (Entity entity : entities) {
+                if (entity.getUuid().equals(this.locatorBarPlus$getUuid())) {
+                    result.add(entity);
+                }
+            }
+            return result;
         } else {
             Vec3d vec3d = this.locatorBarPlus$getPositionOffset().apply(pos);
             Box box = this.locatorBarPlus$getOffsetBox(this.locatorBarPlus$getBox(), vec3d);
             Predicate<Entity> predicate = this.locatorBarPlus$getPositionPredicate(vec3d, box, null);
-            
+
             List<Entity> list = new ArrayList<>();
             for (Entity entity : entities) {
                 if (this.locatorBarPlus$getEntityFilter().downcast(entity) != null && predicate.test(entity)) {
@@ -51,33 +50,33 @@ public interface EntitySelectorExtensions extends IEntitySelector {
     }
 
     private List<Entity> locatorBarPlus$getPlayers(Vec3d pos, List<? extends Entity> entities) {
-         if (this.locatorBarPlus$getPlayerName() != null) {
+        if (this.locatorBarPlus$getPlayerName() != null) {
             List<Entity> result = new ArrayList<>();
             for (Entity entity : entities) {
-                if (entity instanceof PlayerEntity && ((PlayerEntity)entity).getGameProfile().getName().equals(this.locatorBarPlus$getPlayerName())) {
+                if (entity instanceof PlayerEntity && ((PlayerEntity) entity).getGameProfile().getName().equals(this.locatorBarPlus$getPlayerName())) {
                     result.add(entity);
                 }
             }
             return result;
         } else if (this.locatorBarPlus$getUuid() != null) {
-             List<Entity> result = new ArrayList<>();
-             for (Entity entity : entities) {
-                 if (entity instanceof PlayerEntity && entity.getUuid().equals(this.locatorBarPlus$getUuid())) {
-                     result.add(entity);
-                 }
-             }
-             return result;
+            List<Entity> result = new ArrayList<>();
+            for (Entity entity : entities) {
+                if (entity instanceof PlayerEntity && entity.getUuid().equals(this.locatorBarPlus$getUuid())) {
+                    result.add(entity);
+                }
+            }
+            return result;
         } else {
             Vec3d vec3d = this.locatorBarPlus$getPositionOffset().apply(pos);
             Box box = this.locatorBarPlus$getOffsetBox(this.locatorBarPlus$getBox(), vec3d);
             Predicate<Entity> predicate = this.locatorBarPlus$getPositionPredicate(vec3d, box, null);
-            
+
             List<Entity> list = new ArrayList<>();
             for (Entity entity : entities) {
                 if (entity instanceof PlayerEntity && predicate.test(entity)) {
-                     if (this.locatorBarPlus$getEntityFilter().downcast(entity) != null) {
+                    if (this.locatorBarPlus$getEntityFilter().downcast(entity) != null) {
                         list.add(entity);
-                     }
+                    }
                 }
             }
             return this.locatorBarPlus$sortAndLimit(vec3d, list);

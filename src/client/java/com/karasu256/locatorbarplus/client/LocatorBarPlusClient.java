@@ -12,7 +12,7 @@ public class LocatorBarPlusClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         ConfigManager.getProvider().register();
-        
+
         ClientCommandRegistrationCallback.EVENT.register(LocatorBarTesterCommand::register);
         ClientCommandRegistrationCallback.EVENT.register(BetterLocatorBarCommand::register);
     }

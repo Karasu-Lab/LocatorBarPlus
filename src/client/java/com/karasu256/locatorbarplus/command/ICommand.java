@@ -10,12 +10,16 @@ import java.util.concurrent.CompletableFuture;
 
 public interface ICommand {
     String getName();
+
     ArgumentBuilder<FabricClientCommandSource, ?> getArgumentBuilder();
 
     List<ICommand> getSubCommands();
+
     <T> List<ICommandSuggestion<T>> getSuggestions();
 
     <T> CompletableFuture<ICommandSuggestion<T>> onComplete();
+
     <T> void execute(CommandContext<T> context);
+
     <T> void execute(CommandContext<T> context, CommandRegistryAccess registryAccess);
 }

@@ -13,7 +13,7 @@ public class ThresholdTimerLogic implements IActivationLogic {
                 startTime = System.currentTimeMillis();
             }
             long elapsed = System.currentTimeMillis() - startTime;
-            long threshold = (long)(config.general.sneakThresholdSeconds * 1000);
+            long threshold = (long) (config.general.sneakThresholdSeconds * 1000);
             return elapsed >= threshold;
         } else {
             startTime = 0;

@@ -31,22 +31,24 @@ public abstract class AbstractReflectedFieldGetter implements IConfigFieldsAdapt
             if (!Modifier.isPublic(field.getModifiers())) continue;
 
             String name = prefix.isEmpty() ? field.getName() : prefix + "." + field.getName();
-            
+
             getType(field).ifPresentOrElse(
-                type -> map.put(name, type),
-                () -> { if (isNestedConfig(field)) collectFields(name, field.getType(), map); }
+                    type -> map.put(name, type),
+                    () -> {
+                        if (isNestedConfig(field)) collectFields(name, field.getType(), map);
+                    }
             );
         }
     }
 
     protected Optional<FieldTypes> getType(Field field) {
         return Stream.<java.util.function.Function<Field, Optional<FieldTypes>>>of(
-            this::reflectBoolean,
-            this::reflectInt,
-            this::reflectFloat,
-            this::reflectDouble,
-            this::reflectLong,
-            this::reflectString
+                this::reflectBoolean,
+                this::reflectInt,
+                this::reflectFloat,
+                this::reflectDouble,
+                this::reflectLong,
+                this::reflectString
         ).map(f -> f.apply(field)).flatMap(Optional::stream).findFirst();
     }
 

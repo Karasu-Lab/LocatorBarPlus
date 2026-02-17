@@ -8,5 +8,6 @@ public interface IExperienceBar {
     void renderBar(DrawContext context, RenderTickCounter tickCounter, float transparency);
 
     Identifier locatorBarPlus$getBackground();
+
     Identifier locatorBarPlus$getProgress();
 }
