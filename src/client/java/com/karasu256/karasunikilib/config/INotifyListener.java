@@ -1,4 +1,4 @@
-package com.karasu256.locatorbarplus.config.impl;
+package com.karasu256.karasunikilib.config;
 
 public interface INotifyListener<T extends IConfigProvider<C>, C> {
     IConfigProvider<C> getProvider();

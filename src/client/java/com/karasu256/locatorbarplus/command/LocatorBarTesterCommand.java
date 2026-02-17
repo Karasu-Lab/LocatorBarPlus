@@ -1,9 +1,10 @@
 package com.karasu256.locatorbarplus.command;
 
 import com.google.common.collect.Lists;
+import com.karasu256.karasunikilib.command.AbstractCommand;
 import com.karasu256.locatorbarplus.client.OverlayManagerState;
 import com.karasu256.locatorbarplus.impl.IEntitySelector;
-import com.karasu256.locatorbarplus.util.TextMessageBuilder;
+import com.karasu256.karasunikilib.util.TextMessageBuilder;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;

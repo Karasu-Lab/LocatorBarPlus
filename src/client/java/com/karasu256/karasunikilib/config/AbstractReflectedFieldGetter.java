@@ -1,8 +1,8 @@
-package com.karasu256.locatorbarplus.config.impl;
+package com.karasu256.karasunikilib.config;
 
-import com.karasu256.locatorbarplus.config.impl.reflectors.IBooleanReflector;
-import com.karasu256.locatorbarplus.config.impl.reflectors.INumericReflector;
-import com.karasu256.locatorbarplus.config.impl.reflectors.IStringReflector;
+import com.karasu256.karasunikilib.config.reflectors.IBooleanReflector;
+import com.karasu256.karasunikilib.config.reflectors.INumericReflector;
+import com.karasu256.karasunikilib.config.reflectors.IStringReflector;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;

@@ -2,8 +2,8 @@ package com.karasu256.locatorbarplus.config;
 
 import com.karasu256.locatorbarplus.config.impl.AutoConfigFieldsAdapter;
 import com.karasu256.locatorbarplus.config.impl.AutoConfigProvider;
-import com.karasu256.locatorbarplus.config.impl.IConfigFieldsAdapter;
-import com.karasu256.locatorbarplus.config.impl.IConfigProvider;
+import com.karasu256.karasunikilib.config.IConfigFieldsAdapter;
+import com.karasu256.karasunikilib.config.IConfigProvider;
 
 public class ConfigManager {
     private static final IConfigProvider<ModConfig> PROVIDER = new AutoConfigProvider<>(ModConfig.class);

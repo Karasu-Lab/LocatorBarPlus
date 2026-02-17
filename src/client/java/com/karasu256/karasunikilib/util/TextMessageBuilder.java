@@ -1,4 +1,4 @@
-package com.karasu256.locatorbarplus.util;
+package com.karasu256.karasunikilib.util;
 
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;

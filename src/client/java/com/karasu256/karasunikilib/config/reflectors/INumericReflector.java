@@ -1,6 +1,6 @@
-package com.karasu256.locatorbarplus.config.impl.reflectors;
+package com.karasu256.karasunikilib.config.reflectors;
 
-import com.karasu256.locatorbarplus.config.impl.FieldTypes;
+import com.karasu256.karasunikilib.config.FieldTypes;
 
 import java.lang.reflect.Field;
 import java.util.Optional;

@@ -1,5 +1,6 @@
-package com.karasu256.locatorbarplus.config.impl;
+package com.karasu256.karasunikilib.config;
 
+import com.karasu256.locatorbarplus.config.impl.AutoConfigProvider;
 import net.minecraft.util.ActionResult;
 
 public abstract class AbstractNotifyListener<T extends me.shedaniel.autoconfig.ConfigData> implements INotifyListener<IConfigProvider<T>, T> {

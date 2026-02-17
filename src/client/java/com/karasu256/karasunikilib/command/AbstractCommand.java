@@ -1,4 +1,4 @@
-package com.karasu256.locatorbarplus.command;
+package com.karasu256.karasunikilib.command;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.ArgumentBuilder;

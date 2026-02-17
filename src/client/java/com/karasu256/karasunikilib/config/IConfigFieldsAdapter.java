@@ -1,4 +1,4 @@
-package com.karasu256.locatorbarplus.config.impl;
+package com.karasu256.karasunikilib.config;
 
 import java.util.Map;
 

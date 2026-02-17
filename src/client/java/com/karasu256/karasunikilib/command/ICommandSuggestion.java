@@ -1,4 +1,4 @@
-package com.karasu256.locatorbarplus.command;
+package com.karasu256.karasunikilib.command;
 
 import net.minecraft.util.Identifier;
 
