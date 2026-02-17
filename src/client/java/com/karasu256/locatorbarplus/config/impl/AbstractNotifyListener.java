@@ -1,6 +1,6 @@
-package com.karasu256.karasunikilib.config;
+package com.karasu256.locatorbarplus.config.impl;
 
-import com.karasu256.locatorbarplus.config.impl.AutoConfigProvider;
+import com.karasu256.karasunikilib.config.*;
 import net.minecraft.util.ActionResult;
 
 public abstract class AbstractNotifyListener<T extends me.shedaniel.autoconfig.ConfigData> implements INotifyListener<IConfigProvider<T>, T> {
@@ -34,10 +34,6 @@ public abstract class AbstractNotifyListener<T extends me.shedaniel.autoconfig.C
 
     @Override
     public void close(INotifyListener<IConfigProvider<T>, T> instance) {
-        // me.shedaniel.autoconfig.ConfigHolder doesn't provide an easy way to unregister a specific listener
-        // by reference without keeping the registration callback or using an internal list.
-        // For this implementation, we will reset the listening flag. 
-        // In a more complex scenario, we'd need a more involved bridge.
         this.listening = false;
     }
 }

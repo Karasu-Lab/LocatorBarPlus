@@ -1,4 +1,4 @@
-package com.karasu256.locatorbarplus.impl;
+package com.karasu256.karasunikilib.impl;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.entity.Entity;

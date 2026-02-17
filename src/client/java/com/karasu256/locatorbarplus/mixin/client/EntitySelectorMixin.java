@@ -1,6 +1,6 @@
 package com.karasu256.locatorbarplus.mixin.client;
 
-import com.karasu256.locatorbarplus.impl.EntitySelectorExtensions;
+import com.karasu256.karasunikilib.impl.EntitySelectorExtensions;
 import net.minecraft.command.EntitySelector;
 import net.minecraft.entity.Entity;
 import net.minecraft.predicate.NumberRange;
@@ -20,6 +20,7 @@ import java.util.function.Predicate;
 
 @Mixin(EntitySelector.class)
 public abstract class EntitySelectorMixin implements EntitySelectorExtensions {
+
     @Shadow
     @Final
     private int limit;

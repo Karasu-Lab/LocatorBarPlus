@@ -28,15 +28,22 @@
     }
   ],
   "depends": {
+    "karasunikilib": "*",
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
     "minecraft": "${minecraft_version}"
   },
   "custom": {
     "loom:injected_interfaces": {
-      "net/minecraft/class_329": ["com/karasu256/locatorbarplus/impl/IInGameHud"],
-      "net/minecraft/class_11226": ["com/karasu256/locatorbarplus/impl/ILocatorBar"],
-      "net/minecraft/class_11224": ["com/karasu256/locatorbarplus/impl/IExperienceBar"]
+      "net/minecraft/class_329": [
+        "com/karasu256/locatorbarplus/impl/IInGameHud"
+      ],
+      "net/minecraft/class_11226": [
+        "com/karasu256/locatorbarplus/impl/ILocatorBar"
+      ],
+      "net/minecraft/class_11224": [
+        "com/karasu256/locatorbarplus/impl/IExperienceBar"
+      ]
     }
   }
 }

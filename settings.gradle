@@ -11,3 +11,8 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
+include("karasunikilib")
+project(":karasunikilib").projectDir = file("modules/KarasunikiLib")
+
+rootProject.name = "LocatorBarPlus"

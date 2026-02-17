@@ -3,7 +3,7 @@ package com.karasu256.locatorbarplus.command;
 import com.google.common.collect.Lists;
 import com.karasu256.karasunikilib.command.AbstractCommand;
 import com.karasu256.locatorbarplus.client.OverlayManagerState;
-import com.karasu256.locatorbarplus.impl.IEntitySelector;
+import com.karasu256.karasunikilib.impl.IEntitySelector;
 import com.karasu256.karasunikilib.util.TextMessageBuilder;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.ArgumentBuilder;
@@ -36,6 +36,7 @@ public class LocatorBarTesterCommand extends AbstractCommand {
     }
 
     public static class EnableSubCommand extends AbstractCommand {
+
         @Override
         public String getName() {
             return "enable";
@@ -54,13 +55,17 @@ public class LocatorBarTesterCommand extends AbstractCommand {
 
         @Override
         public <T> void execute(CommandContext<T> context) {
-            if (!(context.getSource() instanceof FabricClientCommandSource source)) return;
+            if (!(context.getSource() instanceof FabricClientCommandSource source)) {
+                return;
+            }
 
             try {
                 EntitySelector selector = context.getArgument("targets", EntitySelector.class);
                 MinecraftClient client = MinecraftClient.getInstance();
 
-                if (client.player == null || client.world == null) return;
+                if (client.player == null || client.world == null) {
+                    return;
+                }
 
                 List<Entity> allEntities = Lists.newArrayList(client.world.getEntities());
                 List<Entity> targets = ((IEntitySelector) selector).locatorBarPlus$getEntities(client.player.getPos(), allEntities);
@@ -88,6 +93,7 @@ public class LocatorBarTesterCommand extends AbstractCommand {
     }
 
     public static class DisableSubCommand extends AbstractCommand {
+
         @Override
         public String getName() {
             return "disable";
@@ -104,7 +110,9 @@ public class LocatorBarTesterCommand extends AbstractCommand {
 
         @Override
         public <T> void execute(CommandContext<T> context) {
-            if (!(context.getSource() instanceof FabricClientCommandSource source)) return;
+            if (!(context.getSource() instanceof FabricClientCommandSource source)) {
+                return;
+            }
 
             OverlayManagerState.getInstance().setForcedByCommand(false);
             source.sendFeedback(TextMessageBuilder.create()

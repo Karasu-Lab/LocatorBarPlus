@@ -1,5 +1,4 @@
 package com.karasu256.locatorbarplus.config.impl;
-
 import com.karasu256.karasunikilib.config.IConfigProvider;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigData;

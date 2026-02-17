@@ -1,4 +1,4 @@
-package com.karasu256.locatorbarplus.impl;
+package com.karasu256.karasunikilib.impl;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.predicate.NumberRange;

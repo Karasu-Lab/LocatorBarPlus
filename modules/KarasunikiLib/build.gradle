@@ -1,0 +1,48 @@
+plugins {
+    id 'fabric-loom'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = "karasunikilib"
+}
+
+loom {
+    splitEnvironmentSourceSets()
+
+    mods {
+        "karasunikilib" {
+            sourceSet sourceSets.main
+            sourceSet sourceSets.client
+        }
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+}
+
+processResources {
+    def targetProperties = [
+        "version": project.version,
+        "minecraft_version": project.minecraft_version,
+        "loader_version": project.loader_version,
+        "mod_id": project.mod_id,
+        "mod_name": project.mod_name,
+        "description": project.mod_description,
+        "authors": project.mod_authors,
+        "homepage": project.mod_homepage,
+        "sources": project.mod_sources,
+    ]
+    inputs.properties(targetProperties)
+    filteringCharset "UTF-8"
+
+    filesMatching("fabric.mod.json") {
+        expand(targetProperties)
+    }
+}
