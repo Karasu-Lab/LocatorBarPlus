@@ -1,0 +1,59 @@
+package com.karasu256.locatorbarplus.command;
+
+import com.google.common.collect.Lists;
+import com.karasu256.locatorbarplus.client.OverlayManagerState;
+import com.karasu256.locatorbarplus.impl.IEntitySelector;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.context.CommandContext;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
+import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.command.CommandRegistryAccess;
+import net.minecraft.command.EntitySelector;
+import net.minecraft.command.argument.EntityArgumentType;
+import net.minecraft.entity.Entity;
+import net.minecraft.text.Text;
+
+import java.util.List;
+
+public class LocatorBarTesterCommand {
+    public static void register(CommandDispatcher<FabricClientCommandSource> dispatcher, CommandRegistryAccess registryAccess) {
+        dispatcher.register(ClientCommandManager.literal("locatorbartester")
+                .then(ClientCommandManager.literal("enable")
+                        .then(ClientCommandManager.argument("targets", EntityArgumentType.entities())
+                                .executes(LocatorBarTesterCommand::enableParams)
+                        )
+                )
+        );
+    }
+
+    private static int enableParams(CommandContext<FabricClientCommandSource> context) {
+        try {
+            EntitySelector selector = context.getArgument("targets", EntitySelector.class);
+            MinecraftClient client = MinecraftClient.getInstance();
+            
+            if (client.player == null || client.world == null) return 0;
+
+            List<Entity> allEntities = Lists.newArrayList(client.world.getEntities());
+            List<Entity> targets = ((IEntitySelector) selector).locatorBarPlus$getEntities(client.player.getPos(), allEntities);
+            
+            if (!targets.isEmpty()) {
+                OverlayManagerState state = OverlayManagerState.getInstance();
+                boolean newState = !state.isForcedByCommand();
+                state.setForcedByCommand(newState);
+                if (newState) {
+                    state.setForcedEntities(targets);
+                }
+                context.getSource().sendFeedback(Text.literal("LocatorBarPlus Overlay Force Mode: " + newState + " (Matched " + targets.size() + " entities)"));
+                return targets.size();
+            }
+            
+            context.getSource().sendFeedback(Text.literal("No targets found matching selector."));
+            return 0;
+
+        } catch (Exception e) {
+            context.getSource().sendFeedback(Text.literal("Error executing command: " + e.getMessage()));
+            return 0;
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+  "text.autoconfig.locatorbarplus.title": "Better Locator Bar 設定",
+  "text.autoconfig.locatorbarplus.option.general": "一般",
+  "text.autoconfig.locatorbarplus.option.general.modEnabled": "Modを有効にする",
+  "text.autoconfig.locatorbarplus.option.general.alwaysHideLocatorBar": "ロケーターバーを常に隠す",
+  "text.autoconfig.locatorbarplus.option.locatorBar": "ロケーターバーの設定",
+  "text.autoconfig.locatorbarplus.option.locatorBar.experienceBarTransparency": "経験値バーの透明度"
+}

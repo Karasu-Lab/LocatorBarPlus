@@ -1,9 +1,7 @@
 package com.karasu256.locatorbarplus.mixin.client;
 
-import com.karasu256.locatorbarplus.config.ModConfig;
-import com.karasu256.locatorbarplus.impl.IExperienceBar;
+import com.karasu256.locatorbarplus.client.LocatorBarRenderer;
 import com.karasu256.locatorbarplus.impl.ILocatorBar;
-import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
@@ -11,50 +9,55 @@ import net.minecraft.client.gui.hud.bar.Bar;
 import net.minecraft.client.gui.hud.bar.ExperienceBar;
 import net.minecraft.client.gui.hud.bar.LocatorBar;
 import net.minecraft.client.render.RenderTickCounter;
+import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@SuppressWarnings("DataFlowIssue")
+@SuppressWarnings("AddedMixinMembersNamePattern")
 @Mixin(LocatorBar.class)
-public abstract class LocatorBarMixin implements ILocatorBar {
+public abstract class LocatorBarMixin implements ILocatorBar, Bar {
     @Shadow
     @Final
     private MinecraftClient client;
-    @Unique
-    private ModConfig modConfig;
-
-    @Unique
-    private InGameHud inGameHud;
 
     @Unique
     private ExperienceBar experienceBar;
 
-    @Inject(method = "<init>", at = @At("TAIL"))
-    private void onConstructed(MinecraftClient client, CallbackInfo ci) {
-        this.modConfig = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
-    }
+    @Shadow
+    @Final
+    private static Identifier BACKGROUND;
+    @Shadow
+    @Final
+    private static Identifier ARROW_UP;
+    @Shadow
+    @Final
+    private static Identifier ARROW_DOWN;
 
-    @Inject(method = "renderAddons", at = @At("HEAD"))
-    private void renderAddons(DrawContext context, RenderTickCounter tickCounter, CallbackInfo ci) {
-        if (this.modConfig.general.modEnabled){
-            this.renderAddons(context, tickCounter, this.modConfig.locatorBar.experienceBarTransparency);
-        }
-    }
 
     @Override
     public void renderAddons(DrawContext context, RenderTickCounter tickCounter, float transparency) {
-        ((IExperienceBar)this.experienceBar).renderBar(context, tickCounter, transparency);
-        Bar.drawExperienceLevel(context, this.client.textRenderer, this.client.player.experienceLevel);
+        LocatorBarRenderer.renderLocatorAddons(this, context, tickCounter, transparency, this.client, this.experienceBar);
+    }
+
+    @Override
+    public Identifier locatorBarPlus$getBackground() {
+        return BACKGROUND;
+    }
+
+    @Override
+    public Identifier locatorBarPlus$getArrowUp() {
+        return ARROW_UP;
+    }
+
+    @Override
+    public Identifier locatorBarPlus$getArrowDown() {
+        return ARROW_DOWN;
     }
 
     @Override
     public void setInGameHud(InGameHud inGameHud) {
-        this.inGameHud = inGameHud;
     }
 
     @Override
@@ -62,3 +65,5 @@ public abstract class LocatorBarMixin implements ILocatorBar {
         this.experienceBar = experienceBar;
     }
 }
+
+

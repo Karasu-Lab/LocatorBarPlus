@@ -4,7 +4,6 @@
   "package": "com.karasu256.locatorbarplus.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "EntitySelectorMixin"
   ],
   "client": [
     "ExperienceBarAccessor",
