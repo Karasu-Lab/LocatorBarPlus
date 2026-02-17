@@ -1,6 +1,7 @@
 package com.karasu256.locatorbarplus.mixin.client;
 
 import com.google.common.collect.ImmutableMap;
+import com.karasu256.locatorbarplus.client.LocatorBarRenderer;
 import com.karasu256.locatorbarplus.client.OverlayManagerState;
 import com.karasu256.locatorbarplus.config.ModConfig;
 import com.karasu256.locatorbarplus.impl.IInGameHud;
@@ -66,6 +67,11 @@ public class InGameHudMixin implements IInGameHud {
     private void shouldShowExperienceBar(CallbackInfoReturnable<Boolean> cir) {
         if (config.general.alwaysHideLocatorBar) {
             cir.setReturnValue(true);
+            return;
+        }
+        
+        if (OverlayManagerState.getInstance().shouldShowOverlay() && LocatorBarRenderer.hasAnyMarkers(this.client)) {
+            cir.setReturnValue(true);
         }
     }
 
@@ -89,30 +95,6 @@ public class InGameHudMixin implements IInGameHud {
 
     @Redirect(method = "renderMainHud", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/bar/Bar;renderBar(Lnet/minecraft/client/gui/DrawContext;Lnet/minecraft/client/render/RenderTickCounter;)V"))
     private void renderBar(Bar instance, DrawContext context, RenderTickCounter tickCounter) {
-        OverlayManagerState.getInstance().update(this.client.player, this.config);
-        
-        var bar = this.currentBar.getValue();
-        boolean overlayActive = OverlayManagerState.getInstance().shouldShowOverlay();
-
-        if (overlayActive) {
-            if (bar instanceof LocatorBar locatorBar) {
-                ((ILocatorBar) locatorBar).renderAddons(context, tickCounter, config.locatorBar.experienceBarTransparency);
-                return;
-            }
-            if (bar instanceof ExperienceBar) {
-                ((ILocatorBar) this.locatorBar).renderAddons(context, tickCounter, config.locatorBar.experienceBarTransparency);
-                return;
-            }
-        } else {
-            if (bar instanceof LocatorBar) {
-                if (config.general.alwaysHideLocatorBar) {
-                    return;
-                }
-                this.experienceBar.renderBar(context, tickCounter);
-                return;
-            }
-        }
-        
-        bar.renderBar(context, tickCounter);
+        LocatorBarRenderer.renderHud(this, context, tickCounter, this.config, this.client);
     }
 }

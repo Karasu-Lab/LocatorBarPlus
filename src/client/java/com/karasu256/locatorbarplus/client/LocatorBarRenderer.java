@@ -30,30 +30,58 @@ public class LocatorBarRenderer {
     public static void renderHud(IInGameHud hud, DrawContext context, RenderTickCounter tickCounter, ModConfig config, MinecraftClient client) {
         OverlayManagerState.getInstance().update(client.player, config);
         
-        Bar currentBar = hud.locatorBarPlus$getCurrentBar();
         boolean overlayActive = OverlayManagerState.getInstance().shouldShowOverlay();
+        boolean hasMarkers = hasAnyMarkers(client);
 
-        if (overlayActive) {
-            if (currentBar instanceof LocatorBar locatorBar) {
-                ((ILocatorBar) locatorBar).renderAddons(context, tickCounter, config.locatorBar.experienceBarTransparency);
-                return;
-            }
-            if (currentBar instanceof ExperienceBar) {
-                LocatorBar locatorBar = hud.locatorBarPlus$getLocatorBar();
-                ((ILocatorBar) locatorBar).renderAddons(context, tickCounter, config.locatorBar.experienceBarTransparency);
-                return;
-            }
+        if (overlayActive && hasMarkers) {
+            LocatorBar locatorBar = hud.locatorBarPlus$getLocatorBar();
+            ((ILocatorBar) locatorBar).renderAddons(context, tickCounter, config.locatorBar.experienceBarTransparency);
         } else {
+            Bar currentBar = hud.locatorBarPlus$getCurrentBar();
             if (currentBar instanceof LocatorBar) {
-                if (config.general.alwaysHideLocatorBar) {
-                    return;
-                }
+                if (config.general.alwaysHideLocatorBar) return;
                 hud.locatorBarPlus$getExperienceBar().renderBar(context, tickCounter);
-                return;
+            } else {
+                currentBar.renderBar(context, tickCounter);
             }
         }
+    }
+
+    public static boolean hasAnyMarkers(MinecraftClient client) {
+        if (client.player == null) return false;
+
+        for (Entity entity : OverlayManagerState.getInstance().getForcedEntities()) {
+            if (entity == client.cameraEntity) continue;
+            
+            Vec3d cameraPos = client.gameRenderer.getCamera().getPos();
+            Vec3d entityPos = entity.getPos();
+            
+            double dx = entityPos.x - cameraPos.x;
+            double dz = entityPos.z - cameraPos.z;
+            
+            double bearing = Math.toDegrees(Math.atan2(dz, dx)) - 90.0F;
+            double relativeYaw = MathHelper.wrapDegrees(bearing - client.gameRenderer.getCamera().getYaw());
+            
+            if (relativeYaw >= -60.0 && relativeYaw <= 60.0) return true;
+        }
         
-        currentBar.renderBar(context, tickCounter);
+        if (client.cameraEntity != null && client.player.networkHandler != null) {
+            World world = client.cameraEntity.getWorld();
+            boolean[] found = {false};
+            client.player.networkHandler.getWaypointHandler().forEachWaypoint(client.cameraEntity, (waypoint) -> {
+                if (!(Boolean) waypoint.getSource().left().map((uuid) -> uuid.equals(client.cameraEntity.getUuid())).orElse(false)) {
+                    float distSq = (float) waypoint.squaredDistanceTo(client.cameraEntity);
+                    if (distSq > 1.0F) {
+                        double d = waypoint.getRelativeYaw(world, client.gameRenderer.getCamera());
+                        if (d > -61.0 && d <= 60.0) {
+                            found[0] = true;
+                        }
+                    }
+                }
+            });
+            return found[0];
+        }
+        return false;
     }
 
     public static void renderLocatorAddons(ILocatorBar locatorBar, DrawContext context, RenderTickCounter tickCounter, float transparency, MinecraftClient client, ExperienceBar experienceBar) {

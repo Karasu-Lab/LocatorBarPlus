@@ -4,5 +4,10 @@
   "text.autoconfig.locatorbarplus.option.general.modEnabled": "Mod Enabled",
   "text.autoconfig.locatorbarplus.option.general.alwaysHideLocatorBar": "Always Hide Locator Bar",
   "text.autoconfig.locatorbarplus.option.locatorBar": "Locator Bar Settings",
-  "text.autoconfig.locatorbarplus.option.locatorBar.experienceBarTransparency": "Experience Bar Transparency"
+  "text.autoconfig.locatorbarplus.option.locatorBar.experienceBarTransparency": "Experience Bar Transparency",
+  "text.autoconfig.locatorbarplus.option.general.sneakThresholdSeconds": "Sneak Threshold (Seconds)",
+  "command.locatorbarplus.tester.enabled": "LocatorBarPlus Overlay Force Mode: Enabled (Matched %s entities)",
+  "command.locatorbarplus.tester.disabled": "LocatorBarPlus Overlay Force Mode: Disabled",
+  "command.locatorbarplus.tester.no_targets": "No targets found matching selector.",
+  "command.locatorbarplus.tester.error": "Error executing command: %s"
 }

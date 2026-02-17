@@ -1,22 +1,26 @@
 package com.karasu256.locatorbarplus.client;
 
+import com.karasu256.locatorbarplus.config.ModConfig;
+import com.karasu256.locatorbarplus.impl.IActivationCondition;
+import com.karasu256.locatorbarplus.impl.IActivationLogic;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.PlayerEntity;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.karasu256.locatorbarplus.config.ModConfig;
-
-import net.minecraft.entity.player.PlayerEntity;
 
 public class OverlayManagerState {
     private static final OverlayManagerState INSTANCE = new OverlayManagerState();
 
-    private long sneakStartTime = 0;
+    private final IActivationCondition condition;
+    private final IActivationLogic logic;
     private boolean isModeActive = false;
-    private boolean forcedByCommand = false;
-    private List<Entity> forcedEntities = new ArrayList<>();
+    private final List<Entity> forcedEntities = new ArrayList<>();
 
-    private OverlayManagerState() {}
+    private OverlayManagerState() {
+        this.condition = new SneakCondition();
+        this.logic = new ThresholdTimerLogic();
+    }
 
     public static OverlayManagerState getInstance() {
         return INSTANCE;
@@ -24,21 +28,7 @@ public class OverlayManagerState {
 
     public void update(PlayerEntity player, ModConfig config) {
         if (player == null || config == null) return;
-
-        if (player.isSneaking()) {
-            if (sneakStartTime == 0) {
-                sneakStartTime = System.currentTimeMillis();
-            }
-            long elapsed = System.currentTimeMillis() - sneakStartTime;
-            long threshold = (long)(config.general.sneakThresholdSeconds * 1000);
-
-            if (elapsed >= threshold) {
-                isModeActive = true;
-            }
-        } else {
-            sneakStartTime = 0;
-            isModeActive = false;
-        }
+        this.isModeActive = this.logic.updateAndCheck(this.condition.isActive(player), config);
     }
 
     public boolean shouldShowOverlay() {
@@ -46,20 +36,16 @@ public class OverlayManagerState {
     }
 
     public void setForcedByCommand(boolean forced) {
-        this.forcedByCommand = forced;
         if (!forced) {
             this.isModeActive = false; 
-            this.sneakStartTime = 0;
+            this.logic.reset();
             this.forcedEntities.clear();
         }
     }
-    
-    public boolean isForcedByCommand() {
-        return forcedByCommand;
-    }
 
     public void setForcedEntities(List<Entity> entities) {
-        this.forcedEntities = new ArrayList<>(entities);
+        this.forcedEntities.clear();
+        this.forcedEntities.addAll(entities);
     }
 
     public List<Entity> getForcedEntities() {

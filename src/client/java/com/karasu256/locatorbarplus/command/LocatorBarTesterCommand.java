@@ -44,22 +44,22 @@ public class LocatorBarTesterCommand {
                 OverlayManagerState state = OverlayManagerState.getInstance();
                 state.setForcedByCommand(true);
                 state.setForcedEntities(targets);
-                context.getSource().sendFeedback(Text.literal("LocatorBarPlus Overlay Force Mode: Enabled (Matched " + targets.size() + " entities)"));
+                context.getSource().sendFeedback(Text.translatable("command.locatorbarplus.tester.enabled", targets.size()));
                 return targets.size();
             }
             
-            context.getSource().sendFeedback(Text.literal("No targets found matching selector."));
+            context.getSource().sendFeedback(Text.translatable("command.locatorbarplus.tester.no_targets"));
             return 0;
 
         } catch (Exception e) {
-            context.getSource().sendFeedback(Text.literal("Error executing command: " + e.getMessage()));
+            context.getSource().sendFeedback(Text.translatable("command.locatorbarplus.tester.error", e.getMessage()));
             return 0;
         }
     }
 
     private static int disableParams(CommandContext<FabricClientCommandSource> context) {
         OverlayManagerState.getInstance().setForcedByCommand(false);
-        context.getSource().sendFeedback(Text.literal("LocatorBarPlus Overlay Force Mode: Disabled"));
+        context.getSource().sendFeedback(Text.translatable("command.locatorbarplus.tester.disabled"));
         return 1;
     }
 }
