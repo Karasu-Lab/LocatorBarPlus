@@ -9,5 +9,10 @@
   "command.locatorbarplus.tester.enabled": "強制表示モード: 有効 (%s 体が対象)",
   "command.locatorbarplus.tester.disabled": "強制表示モード: 無効",
   "command.locatorbarplus.tester.no_targets": "対象が見つかりませんでした。",
-  "command.locatorbarplus.tester.error": "エラーが発生しました: %s"
+  "command.locatorbarplus.tester.error": "エラーが発生しました: %s",
+  "command.betterlocatorbar.get.success": "%s = %s",
+  "command.betterlocatorbar.set.success": "%s を %s に設定しました",
+  "command.betterlocatorbar.error.unknown_field": "不明なフィールドです: %s",
+  "command.betterlocatorbar.error.generic": "エラー: %s",
+  "command.betterlocatorbar.error.set_failed": "設定に失敗しました: %s"
 }

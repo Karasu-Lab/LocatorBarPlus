@@ -9,5 +9,10 @@
   "command.locatorbarplus.tester.enabled": "LocatorBarPlus Overlay Force Mode: Enabled (Matched %s entities)",
   "command.locatorbarplus.tester.disabled": "LocatorBarPlus Overlay Force Mode: Disabled",
   "command.locatorbarplus.tester.no_targets": "No targets found matching selector.",
-  "command.locatorbarplus.tester.error": "Error executing command: %s"
+  "command.locatorbarplus.tester.error": "Error executing command: %s",
+  "command.betterlocatorbar.get.success": "%s = %s",
+  "command.betterlocatorbar.set.success": "Successfully set %s to %s",
+  "command.betterlocatorbar.error.unknown_field": "Unknown field: %s",
+  "command.betterlocatorbar.error.generic": "Error: %s",
+  "command.betterlocatorbar.error.set_failed": "Failed to set value: %s"
 }
