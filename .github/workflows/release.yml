@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0
 
       - name: KarasuLab Mod Releaser
-        uses: Karasu-Lab/Karasu-Lab-Mod-Releaser@v2.1
+        uses: Karasu-Lab/Karasu-Lab-Mod-Releaser@v2.1.1
         with:
           modrinth_project_id: ${{ vars.MODRINTH_PROJECT_ID }}
           modrinth_token: ${{ secrets.MODRINTH_TOKEN }}
