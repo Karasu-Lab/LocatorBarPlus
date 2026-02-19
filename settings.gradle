@@ -14,7 +14,7 @@ pluginManagement {
 
 includeBuild("modules/KarasunikiLib") {
     dependencySubstitution {
-        substitute module("com.karasu256:KarasunikiLib") using project(":")
+        substitute module("com.karasu256:karasunikilib") using project(":")
     }
 }
 
