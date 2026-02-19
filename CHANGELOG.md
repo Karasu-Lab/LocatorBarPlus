@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.3](https://github.com/Hashibutogarasu/LocatorBarPlus/compare/v1.4.2...v1.4.3) (2026-02-19)
+
+
+### Bug Fixes
+
+* fixed mod version ([cb41c58](https://github.com/Hashibutogarasu/LocatorBarPlus/commit/cb41c582cd0a02b7e3df47b0ad70bc10bbaa35aa))
+
 ## [1.4.2](https://github.com/Hashibutogarasu/LocatorBarPlus/compare/v1.4.1...v1.4.2) (2026-02-19)
 
 
