@@ -4,7 +4,7 @@ import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
-import static com.karasu256.locatorbarplus.client.LocatorBarPlusClient.MOD_ID;
+import static com.karasu256.locatorbarplus.Constants.MOD_ID;
 
 @Config(name = MOD_ID)
 public class ModConfig implements ConfigData {
