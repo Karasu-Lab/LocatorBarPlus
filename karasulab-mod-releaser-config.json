@@ -29,5 +29,8 @@
             "modrinth": "DFR1YkHk",
             "curseforge": "1466401"
         }
-    }
+    },
+    "extra_dependencies": [
+        "com.karasu256:karasunikilib"
+    ]
 }
