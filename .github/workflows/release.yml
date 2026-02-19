@@ -13,6 +13,12 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
       - name: KarasuLab Mod Releaser
         uses: Karasu-Lab/Karasu-Lab-Mod-Releaser@v2.0.1
         with:
