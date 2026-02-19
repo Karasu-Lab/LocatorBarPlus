@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.7](https://github.com/Karasu-Lab/LocatorBarPlus/compare/v1.4.6...v1.4.7) (2026-02-19)
+
+
+### Bug Fixes
+
+* fixed gradle script for resolve dependencies ([48805ab](https://github.com/Karasu-Lab/LocatorBarPlus/commit/48805ab78974fdfe59828277c87b69f4ae1985a4))
+
 ## [1.4.6](https://github.com/Karasu-Lab/LocatorBarPlus/compare/v1.4.5...v1.4.6) (2026-02-19)
 
 
