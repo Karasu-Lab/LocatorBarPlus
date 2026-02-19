@@ -2,7 +2,7 @@
     "packages": {
         ".": {
             "release-type": "simple",
-            "package-name": "Locator Bar Plus",
+            "package-name": "LocatorBarPlus",
             "include-component-in-tag": false,
             "extra-files": [
                 "gradle.properties"
