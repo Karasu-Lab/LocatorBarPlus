@@ -1,7 +1,7 @@
 package com.karasu256.locatorbarplus.mixin.client;
 
 import com.google.common.collect.ImmutableMap;
-import com.karasu256.locatorbarplus.client.LocatorBarRenderer;
+import com.karasu256.locatorbarplus.client.renderer.LocatorBarRenderer;
 import com.karasu256.locatorbarplus.client.OverlayManagerState;
 import com.karasu256.locatorbarplus.config.ModConfig;
 import com.karasu256.locatorbarplus.impl.IInGameHud;
