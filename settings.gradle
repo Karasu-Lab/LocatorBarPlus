@@ -12,10 +12,7 @@ pluginManagement {
     }
 }
 
-includeBuild("modules/KarasunikiLib") {
-    dependencySubstitution {
-        substitute module("com.karasu256:karasunikilib") using project(":")
-    }
-}
+include("KarasunikiLib")
+project(":KarasunikiLib").projectDir = file("modules/KarasunikiLib")
 
 rootProject.name = "LocatorBarPlus"
