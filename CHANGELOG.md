@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/Hashibutogarasu/LocatorBarPlus/compare/v1.0.0...v1.1.0) (2026-02-19)
+
+
+### Features
+
+* updated gradle wrapper ([6fc52fb](https://github.com/Hashibutogarasu/LocatorBarPlus/commit/6fc52fbae87de48ca9c7e60bb27d721c83e5b3a6))
+* updated module ([809226f](https://github.com/Hashibutogarasu/LocatorBarPlus/commit/809226f863222d943c3488ff64cb3a06b688d9bc))
+
 ## [1.0.0](https://github.com/Hashibutogarasu/LocatorBarPlus/compare/v0.0.1...v1.0.0) (2026-02-19)
 
 
