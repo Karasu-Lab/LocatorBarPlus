@@ -2,10 +2,10 @@ package com.karasu256.locatorbarplus.command;
 
 import com.karasu256.karasunikilib.command.AbstractCommand;
 import com.karasu256.karasunikilib.command.ICommandSuggestion;
-import com.karasu256.locatorbarplus.config.ConfigManager;
-import com.karasu256.locatorbarplus.config.ModConfig;
 import com.karasu256.karasunikilib.config.FieldTypes;
 import com.karasu256.karasunikilib.util.TextMessageBuilder;
+import com.karasu256.locatorbarplus.config.ConfigManager;
+import com.karasu256.locatorbarplus.config.ModConfig;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.ArgumentBuilder;
