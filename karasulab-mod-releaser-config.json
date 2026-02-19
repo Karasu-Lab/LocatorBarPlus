@@ -22,6 +22,12 @@
             "type": "optional",
             "modrinth": "mOgUt4GM",
             "curseforge": "308702"
+        },
+        "com.karasu256:karasunikilib": {
+            "name": "KarasunikiLib",
+            "type": "required",
+            "modrinth": "DFR1YkHk",
+            "curseforge": "1466401"
         }
     }
 }
