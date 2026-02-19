@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.6](https://github.com/Karasu-Lab/LocatorBarPlus/compare/v1.4.5...v1.4.6) (2026-02-19)
+
+
+### Bug Fixes
+
+* updated action ([a3ac3e8](https://github.com/Karasu-Lab/LocatorBarPlus/commit/a3ac3e80ff624052da4730de83cb4b8daecb1f27))
+
 ## [1.4.5](https://github.com/Karasu-Lab/LocatorBarPlus/compare/v1.4.4...v1.4.5) (2026-02-19)
 
 
