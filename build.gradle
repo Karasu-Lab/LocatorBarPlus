@@ -41,7 +41,7 @@ dependencies {
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
-    modImplementation "com.karasu256:KarasunikiLib:0.0.1"
+    modImplementation "com.karasu256:karasunikilib:0.0.1"
 
     modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
         exclude(group: "net.fabricmc.fabric-api")
