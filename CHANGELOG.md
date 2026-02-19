@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/Karasu-Lab/LocatorBarPlus/compare/v1.6.0...v1.7.0) (2026-02-19)
+
+
+### Features
+
+* added sneak, toggle and hold mode for switching locator bar ([6c98371](https://github.com/Karasu-Lab/LocatorBarPlus/commit/6c983719a14e0c061cbc0713a3af7a39a97a5d10))
+
 ## [1.6.0](https://github.com/Karasu-Lab/LocatorBarPlus/compare/v1.5.1...v1.6.0) (2026-02-19)
 
 
