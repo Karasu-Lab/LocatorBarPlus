@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/Hashibutogarasu/LocatorBarPlus/compare/v1.1.8...v1.2.0) (2026-02-19)
+
+
+### Features
+
+* added checkout step ([a5cd82d](https://github.com/Hashibutogarasu/LocatorBarPlus/commit/a5cd82d6cb314fabd354d3f2e464030822ff7b33))
+
 ## [1.1.8](https://github.com/Hashibutogarasu/LocatorBarPlus/compare/v1.1.7...v1.1.8) (2026-02-19)
 
 
