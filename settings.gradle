@@ -12,8 +12,6 @@ pluginManagement {
     }
 }
 
-include("karasunikilib")
 includeBuild("modules/KarasunikiLib")
-project(":karasunikilib").projectDir = file("modules/KarasunikiLib")
 
 rootProject.name = "LocatorBarPlus"
