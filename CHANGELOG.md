@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/Karasu-Lab/LocatorBarPlus/compare/v1.5.0...v1.5.1) (2026-02-19)
+
+
+### Bug Fixes
+
+* fixed dependencies configuration ([bcac493](https://github.com/Karasu-Lab/LocatorBarPlus/commit/bcac493f5ad1abe5caeaef4b33b6087f9a8af0c3))
+
 ## [1.5.0](https://github.com/Karasu-Lab/LocatorBarPlus/compare/v1.4.7...v1.5.0) (2026-02-19)
 
 
