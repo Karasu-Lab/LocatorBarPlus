@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.0](https://github.com/Karasu-Lab/LocatorBarPlus/compare/v1.5.1...v1.6.0) (2026-02-19)
+
+
+### Features
+
+* changed environment to client ([36c5b8d](https://github.com/Karasu-Lab/LocatorBarPlus/commit/36c5b8db68b77aa07ed8fb3b374b946547c53829))
+* updated to 1.21.7 ([689ff64](https://github.com/Karasu-Lab/LocatorBarPlus/commit/689ff646b8ea2a66fd4a4e45bb14738ba91c5a95))
+
 ## [1.5.1](https://github.com/Karasu-Lab/LocatorBarPlus/compare/v1.5.0...v1.5.1) (2026-02-19)
 
 
