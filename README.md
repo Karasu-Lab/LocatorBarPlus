@@ -37,4 +37,4 @@ For major changes, please open an issue first to discuss what you would like to 
 
 ## License
 
-This project is licensed under the MIT License. See [LICENSE.txt](https://github.com/Hashibutogarasu/LocatorBarPlus/blob/master/LICENSE.txt) for details.
+This project is licensed under the MIT License. See [LICENSE.txt](https://github.com/Hashibutogarasu/LocatorBarPlus/blob/main/LICENSE.txt) for details.
