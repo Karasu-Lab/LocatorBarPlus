@@ -1,5 +1,6 @@
-package com.karasu256.locatorbarplus.client;
+package com.karasu256.locatorbarplus.client.condition;
 
+import com.karasu256.locatorbarplus.client.LocatorBarPlusClient;
 import com.karasu256.locatorbarplus.impl.IActivationCondition;
 import net.minecraft.entity.player.PlayerEntity;
 

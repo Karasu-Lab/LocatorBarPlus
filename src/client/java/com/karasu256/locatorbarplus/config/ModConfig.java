@@ -1,6 +1,9 @@
 package com.karasu256.locatorbarplus.config;
 
 import com.karasu256.locatorbarplus.client.*;
+import com.karasu256.locatorbarplus.client.condition.KeyHoldCondition;
+import com.karasu256.locatorbarplus.client.condition.KeyToggleCondition;
+import com.karasu256.locatorbarplus.client.condition.SneakCondition;
 import com.karasu256.locatorbarplus.impl.IActivationCondition;
 import com.karasu256.locatorbarplus.impl.IActivationLogic;
 import me.shedaniel.autoconfig.ConfigData;

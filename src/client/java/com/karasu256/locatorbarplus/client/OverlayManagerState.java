@@ -1,5 +1,6 @@
 package com.karasu256.locatorbarplus.client;
 
+import com.karasu256.locatorbarplus.client.condition.SneakCondition;
 import com.karasu256.locatorbarplus.config.ModConfig;
 import com.karasu256.locatorbarplus.impl.IActivationCondition;
 import com.karasu256.locatorbarplus.impl.IActivationLogic;
@@ -11,10 +12,9 @@ import java.util.List;
 
 public class OverlayManagerState {
     private static final OverlayManagerState INSTANCE = new OverlayManagerState();
-
+    private final List<Entity> forcedEntities = new ArrayList<>();
     private IActivationCondition condition;
     private IActivationLogic logic;
-    private final List<Entity> forcedEntities = new ArrayList<>();
     private boolean isModeActive = false;
     private ModConfig.ConditionMode lastMode = null;
 
