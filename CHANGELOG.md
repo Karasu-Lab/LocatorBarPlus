@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.5](https://github.com/Hashibutogarasu/LocatorBarPlus/compare/v1.1.4...v1.1.5) (2026-02-19)
+
+
+### Bug Fixes
+
+* fixed build error ([02a2474](https://github.com/Hashibutogarasu/LocatorBarPlus/commit/02a24747e7143186fd1964af06a68fe3b6d9ab68))
+
 ## [1.1.4](https://github.com/Hashibutogarasu/LocatorBarPlus/compare/v1.1.3...v1.1.4) (2026-02-19)
 
 
