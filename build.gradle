@@ -1,7 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.11.5'
-    id 'maven-publish'
-    id "com.hypherionmc.modutils.modpublisher" version "2.1.7"
+    id 'fabric-loom' version '1.15-SNAPSHOT'
 }
 
 version = project.mod_version
@@ -41,7 +39,7 @@ dependencies {
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
     modImplementation project(path: ":karasunikilib", configuration: 'namedElements')
 
@@ -88,48 +86,5 @@ jar {
 
     from("LICENSE") {
         rename { "${it}_${project.archivesBaseName}" }
-    }
-}
-
-// configure the maven publication
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-            // Include any other components you want to publish
-        }
-    }
-}
-
-publisher {
-    apiKeys {
-        modrinth System.getenv("MODRINTH_TOKEN")
-        curseforge System.getenv("CURSEFORGE_API_TOKEN")
-    }
-
-    setDisplayName("v${project.version} for ${project.minecraft_version}")
-    setDebug(true)
-    setModrinthID(project.modrinth_id)
-    setCurseID(project.curseforge_id)
-    setVersionType("beta")
-    setChangelog("changelog.md")
-    setProjectVersion("${project.minecraft_version}-${project.version}")
-    setDisplayName(mod_name)
-    setGameVersions(project.minecraft_version)
-    setLoaders("fabric")
-    setArtifact(remapJar)
-    setPlatformArtifact("modrinth", remapJar)
-    setDisableMalwareScanner(true)
-    setJavaVersions(JavaVersion.VERSION_21, 21)
-    setDisableEmptyJarCheck(true)
-
-    modrinthDepends {
-        required "fabric-api", "cloth-config"
-        optional "modmenu"
-    }
-
-    curseDepends {
-        required "fabric-api", "cloth-config"
-        optional "modmenu"
     }
 }
