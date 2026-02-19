@@ -1,5 +1,6 @@
-package com.karasu256.locatorbarplus.client;
+package com.karasu256.locatorbarplus.client.renderer;
 
+import com.karasu256.locatorbarplus.client.OverlayManagerState;
 import com.karasu256.locatorbarplus.config.ModConfig;
 import com.karasu256.locatorbarplus.impl.IExperienceBar;
 import com.karasu256.locatorbarplus.impl.IInGameHud;

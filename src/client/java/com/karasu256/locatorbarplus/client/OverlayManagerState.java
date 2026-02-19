@@ -1,5 +1,6 @@
 package com.karasu256.locatorbarplus.client;
 
+import com.karasu256.locatorbarplus.client.condition.SneakCondition;
 import com.karasu256.locatorbarplus.config.ModConfig;
 import com.karasu256.locatorbarplus.impl.IActivationCondition;
 import com.karasu256.locatorbarplus.impl.IActivationLogic;
@@ -11,11 +12,11 @@ import java.util.List;
 
 public class OverlayManagerState {
     private static final OverlayManagerState INSTANCE = new OverlayManagerState();
-
-    private final IActivationCondition condition;
-    private final IActivationLogic logic;
     private final List<Entity> forcedEntities = new ArrayList<>();
+    private IActivationCondition condition;
+    private IActivationLogic logic;
     private boolean isModeActive = false;
+    private ModConfig.ConditionMode lastMode = null;
 
     private OverlayManagerState() {
         this.condition = new SneakCondition();
@@ -28,7 +29,18 @@ public class OverlayManagerState {
 
     public void update(PlayerEntity player, ModConfig config) {
         if (player == null || config == null) return;
+
+        if (lastMode != config.general.conditionMode) {
+            updateStrategies(config.general.conditionMode);
+            lastMode = config.general.conditionMode;
+        }
+
         this.isModeActive = this.logic.updateAndCheck(this.condition.isActive(player), config);
+    }
+
+    private void updateStrategies(ModConfig.ConditionMode mode) {
+        this.condition = mode.createCondition();
+        this.logic = mode.createLogic();
     }
 
     public boolean shouldShowOverlay() {

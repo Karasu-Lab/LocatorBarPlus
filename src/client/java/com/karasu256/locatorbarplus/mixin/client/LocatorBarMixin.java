@@ -1,6 +1,6 @@
 package com.karasu256.locatorbarplus.mixin.client;
 
-import com.karasu256.locatorbarplus.client.LocatorBarRenderer;
+import com.karasu256.locatorbarplus.client.renderer.LocatorBarRenderer;
 import com.karasu256.locatorbarplus.impl.ILocatorBar;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
